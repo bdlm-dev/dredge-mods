@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+
+  <ItemGroup>
+		<ProjectReference Include="..\Winch\Winch.csproj" />
+	  <Reference Include="Assembly-CSharp">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\Assembly-CSharp.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Assembly-CSharp-firstpass">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Sirenix.Serialization">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\Sirenix.Serialization.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Unity.Addressables">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\Unity.Addressables.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Unity.Localization">
+		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\DREDGE\DREDGE_Data\Managed\Unity.Localization.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Unity.ResourceManager">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\Unity.ResourceManager.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.CoreModule">
+		  <HintPath>$(DredgePath)\DREDGE_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+	  </Reference>
+  </ItemGroup>
+
+</Project>
