@@ -1,5 +1,0 @@
-{
-    "ModAssembly": "AdjustHoodedFigures.dll",
-    "Entrypoint": "AdjustHoodedFigures.Loader/Initialize",
-    "Author": "bluey#2108"
-}
