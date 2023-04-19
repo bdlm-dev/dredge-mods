@@ -1,5 +1,7 @@
 {
+    "Author": "bluey#2108",
     "ModAssembly": "AdjustHoodedFigures.dll",
     "Entrypoint": "AdjustHoodedFigures.Loader/Initialize",
-    "Author": "bluey#2108"
+    "Version": "1.0",
+    "MinWinchVersion": "alpha-1.0"
 }
