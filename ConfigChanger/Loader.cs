@@ -7,12 +7,12 @@ using System.Reflection;
 using Newtonsoft.Json.Linq;
 using HarmonyLib;
 using System.IO;
+using System.Diagnostics;
 
 namespace ConfigChanger
 {
     public class Loader
     {
-
         public static Dictionary<Type, string> SetType = new Dictionary<Type, string>()
         {
             { typeof(System.Single), "Single"},
@@ -25,7 +25,8 @@ namespace ConfigChanger
         public static void Initialize()
         {
             ManagersLoaded += LoadConfig;
-            if (File.Exists("Config.json"))
+            WinchCore.Log.Debug(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\" + "Config.json");
+            if (File.Exists(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\Mods\\ConfigChanger\\" +"Config.json"))
             {
                 if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false) == true)
                 {
