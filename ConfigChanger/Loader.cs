@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Winch.Core;
 using Winch.Config;
@@ -29,6 +29,7 @@ namespace ConfigChanger
             if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true))
             {
                 WinchCore.Log.Info("Applying Harmony Patches...");
+                WinchCore.Log.Info("Custom config applied.");
                 var harmony = new Harmony("com.dredge.configchanger");
                 harmony.PatchAll();
             }
@@ -44,7 +45,7 @@ namespace ConfigChanger
 
         public static void GenerateConfig()
         {
-            WinchCore.Log.Debug("Fetching config...");
+            WinchCore.Log.Info("Building config...");
             baseConfig = GameManager.Instance.GameConfigData;
             foreach (PropertyInfo prop in baseConfig.GetType().GetRuntimeProperties())
             {
@@ -68,42 +69,6 @@ namespace ConfigChanger
                         WinchCore.Log.Debug($"{prop} | {prop.PropertyType} | {prop.Name}");
                     }
                 }
-            }
-            foreach (KeyValuePair<string, string[]> entry in customConfig)
-            {
-                var values = entry.Value;
-                WinchCore.Log.Debug($"{entry.Key} : [{values[0]}:{values[1]}]");
-                if (values[0] == "Single")
-                {
-                    setGameConfigDataProperty<Single>(entry.Key, Convert.ToSingle(values[1]));
-                }
-                else if (values[0] == "Int32")
-                {
-                    setGameConfigDataProperty<Int32>(entry.Key, Convert.ToInt32(values[1]));
-                }
-                else if (values[0] == "Decimal")
-                {
-                    setGameConfigDataProperty<Decimal>(entry.Key, Convert.ToDecimal(values[1]));
-                }
-                else
-                {
-                    setGameConfigDataProperty<string>(entry.Key, values[1]);
-                }
-            }
-        }
-
-        public static void setGameConfigDataProperty<T>(string key, T data)
-        {
-            try
-            {
-                WinchCore.Log.Debug($"Set property {key} to {data}");
-                // will need to patch in set methods for these attributes
-                //GameManager.Instance.GameConfigData.GetType().GetRuntimeProperty(key).SetValue(GameManager.Instance.GameConfigData, data, null);
-            }
-            catch (Exception ex)
-            {
-                WinchCore.Log.Error(ex);
-                WinchCore.Log.Debug($"{key}:{data}");
             }
         }
     }
