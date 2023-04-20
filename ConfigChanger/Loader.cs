@@ -19,14 +19,13 @@ namespace ConfigChanger
             { typeof(System.Decimal), "Decimal"},
             { typeof(System.String), "String"}
         };
-        public static bool doLoadCustomConfig = true;
         public static Dictionary<string, string[]> customConfig = new Dictionary<string, string[]>();
         public static List<Type> validTypes = new List<Type>() { typeof(System.Int32), typeof(System.Single), typeof(System.String), typeof(System.Decimal) };
         public static GameConfigData baseConfig;
         public static void Initialize()
         {
             ManagersLoaded += LoadConfig;
-            if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true))
+            if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false))
             {
                 WinchCore.Log.Info("Applying Harmony Patches...");
                 WinchCore.Log.Info("Custom config applied.");
@@ -37,10 +36,7 @@ namespace ConfigChanger
 
         public static void LoadConfig(object sender, EventArgs e)
         {
-            if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true))
-            {
-                GenerateConfig();
-            }
+            GenerateConfig();
         }
 
         public static void GenerateConfig()
@@ -58,7 +54,7 @@ namespace ConfigChanger
                     if (validTypes.Contains(prop.PropertyType))
                     {
                         customConfig.Add(prop.Name, propValues);
-                        customConfig[prop.Name] = ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), null).ToObject<string[]>();
+                        customConfig[prop.Name] = ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), JArray.FromObject(propValues)).ToObject<string[]>();
                     }
                 }
                 catch (Exception ex)
