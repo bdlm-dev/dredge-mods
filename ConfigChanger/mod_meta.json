@@ -1,0 +1,8 @@
+{
+    "Author": "bluey#2108",
+    "ModAssembly": "ConfigChanger.dll",
+    "Entrypoint": "ConfigChanger.Loader/Initialize",
+    "Version": "1.0",
+    "MinWinchVersion": "alpha-1.0",
+    "DefaultConfig": {}
+}
