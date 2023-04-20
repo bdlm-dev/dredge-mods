@@ -6,6 +6,7 @@ using static Winch.Core.API.DredgeEvent;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 using HarmonyLib;
+using System.IO;
 
 namespace ConfigChanger
 {
@@ -24,12 +25,15 @@ namespace ConfigChanger
         public static void Initialize()
         {
             ManagersLoaded += LoadConfig;
-            if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false))
+            if (File.Exists("Config.json"))
             {
-                WinchCore.Log.Info("Applying Harmony Patches...");
-                WinchCore.Log.Info("Custom config applied.");
-                var harmony = new Harmony("com.dredge.configchanger");
-                harmony.PatchAll();
+                if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false) == true)
+                {
+                    WinchCore.Log.Info("Applying Harmony Patches...");
+                    WinchCore.Log.Info("Custom config applied.");
+                    var harmony = new Harmony("com.dredge.configchanger");
+                    harmony.PatchAll();
+                }
             }
         }
 
@@ -64,6 +68,7 @@ namespace ConfigChanger
                     }
                 }
             }
+            ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true);
         }
     }
 }
