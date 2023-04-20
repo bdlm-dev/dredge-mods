@@ -16,7 +16,7 @@ Mods are installed by extracting the downloaded .zip file, and then placing that
 ### ConfigChanger
 - Allows game config values to be changed from a Config.json file located within the `Mods/ConfigChanger/` folder.
 - More than **60** modifiable attributes
-- Includes attributes such as `BaseAberrationSpawnChance`, `BasePlayerSpeed`, `ResearchItemDredgeSpotSpawnChance` and many more.
+- Includes attributes such as `BaseAberrationSpawnChance`, `BasePlayerSpeed`, `ResearchItemDredgeSpotSpawnChance` and many more detailed [here](https://github.com/bdlm-dev/dredge-mods/tree/main/ConfigChanger).
 - Place into mods folder, run the game, and then close the game. This will generate your config file.
 - Then change the value for any entries you wish to change in the config, save the file, and launch the game to use your custom config.
 - Use of custom values can be controlled via the boolean `doLoadCustomConfig` entry at the bottom of the config.
