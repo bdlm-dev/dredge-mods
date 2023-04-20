@@ -19,7 +19,6 @@ namespace ConfigChanger
             { typeof(System.Decimal), "Decimal"},
             { typeof(System.String), "String"}
         };
-        public static Dictionary<string, string[]> customConfig = new Dictionary<string, string[]>();
         public static List<Type> validTypes = new List<Type>() { typeof(System.Int32), typeof(System.Single), typeof(System.String), typeof(System.Decimal) };
         public static GameConfigData baseConfig;
         public static void Initialize()
@@ -53,8 +52,7 @@ namespace ConfigChanger
                     };
                     if (validTypes.Contains(prop.PropertyType))
                     {
-                        customConfig.Add(prop.Name, propValues);
-                        customConfig[prop.Name] = ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), JArray.FromObject(propValues)).ToObject<string[]>();
+                        ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), JArray.FromObject(propValues)).ToObject<string[]>();
                     }
                 }
                 catch (Exception ex)
