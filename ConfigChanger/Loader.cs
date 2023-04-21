@@ -25,8 +25,9 @@ namespace ConfigChanger
         public static void Initialize()
         {
             ManagersLoaded += LoadConfig;
-            WinchCore.Log.Debug(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\" + "Config.json");
-            if (File.Exists(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\Mods\\ConfigChanger\\" +"Config.json"))
+            string _path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\Mods\\ConfigChanger\\" + "Config.json";
+            WinchCore.Log.Debug(_path);
+            if (File.Exists(_path))
             {
                 if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false) == true)
                 {
