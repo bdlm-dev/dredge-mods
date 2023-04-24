@@ -13,20 +13,18 @@ namespace ConfigChanger
 {
     public class Loader
     {
-        public static Dictionary<Type, string> SetType = new Dictionary<Type, string>()
+        public static Dictionary<Type, string> setType = new Dictionary<Type, string>()
         {
             { typeof(System.Single), "Single"},
             { typeof(System.Int32), "Int32"},
             { typeof(System.Decimal), "Decimal"},
             { typeof(System.String), "String"}
         };
-        public static List<Type> validTypes = new List<Type>() { typeof(System.Int32), typeof(System.Single), typeof(System.String), typeof(System.Decimal) };
         public static GameConfigData baseConfig;
         public static void Initialize()
         {
-            ManagersLoaded += LoadConfig;
+            ManagersLoaded += GenerateConfig;
             string _path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\Mods\\ConfigChanger\\" + "Config.json";
-            WinchCore.Log.Debug(_path);
             if (File.Exists(_path))
             {
                 if (ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", false) == true)
@@ -39,35 +37,27 @@ namespace ConfigChanger
             }
         }
 
-        public static void LoadConfig(object sender, EventArgs e)
+        public static void GenerateConfig(object sender, EventArgs e)
         {
-            GenerateConfig();
-        }
-
-        public static void GenerateConfig()
-        {
-            WinchCore.Log.Info("Building config...");
+            WinchCore.Log.Info("Getting config...");
             baseConfig = GameManager.Instance.GameConfigData;
             foreach (PropertyInfo prop in baseConfig.GetType().GetRuntimeProperties())
             {
                 try
                 {
                     string[] propValues = new string[2] {
-                        SetType[prop.PropertyType],
-                        prop.GetValue(baseConfig).ToString()
-                    };
-                    if (validTypes.Contains(prop.PropertyType))
+                    setType[prop.PropertyType],
+                    prop.GetValue(baseConfig).ToString()
+                };
+                    if (setType.ContainsKey(prop.PropertyType))
                     {
                         ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), JArray.FromObject(propValues)).ToObject<string[]>();
                     }
                 }
+                catch (KeyNotFoundException) {}
                 catch (Exception ex)
                 {
-                    if (!(ex is KeyNotFoundException))
-                    {
-                        WinchCore.Log.Error(ex.ToString());
-                        WinchCore.Log.Debug($"{prop} | {prop.PropertyType} | {prop.Name}");
-                    }
+                    WinchCore.Log.Debug(ex);
                 }
             }
             ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true);
