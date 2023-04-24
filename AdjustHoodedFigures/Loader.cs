@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Winch.Core;
-using static Winch.Core.API.DredgeEvent;
+using Winch.Core.API;
+using Winch.Core.API.Events.Addressables;
 
 namespace AdjustHoodedFigures
 {
@@ -9,13 +10,12 @@ namespace AdjustHoodedFigures
         public static string Template = "HoodedFigure";
         public static void Initialize()
         {
-            QuestsLoaded += FetchQuests;
+            DredgeEvent.AddressableEvents.QuestsLoaded.On += FetchQuests;
         }
 
         public static void FetchQuests(object sender, AddressablesLoadedEventArgs<QuestData> e)
         {
             List<string> toRemoveEntry = new List<string>();
-            // Fetch and remove failed quest entries.
             foreach (SerializedQuestEntry entry in GameManager.Instance.SaveData.questEntries.Values) 
             {
                 if( entry.id.Contains(Template) && entry.resolutionIndex == 1)
@@ -23,13 +23,9 @@ namespace AdjustHoodedFigures
                     toRemoveEntry.Add(entry.id);
                 }
             }
-            foreach (string key in toRemoveEntry)
-            {
-                GameManager.Instance.SaveData.questEntries.Remove(key);
-            }
+            toRemoveEntry.ForEach(entry => GameManager.Instance.SaveData.questEntries.Remove(entry));
 
             List<string> toRemoveNode = new List<string>();
-            // Fetch and remove visited dialogue nodes of failed quest entries.
             foreach (string node in GameManager.Instance.SaveData.visitedNodes)
             {
                 if (node.Contains(Template))
@@ -44,10 +40,7 @@ namespace AdjustHoodedFigures
                     }
                 }
             }
-            foreach(string key in toRemoveNode)
-            {
-                GameManager.Instance.SaveData.visitedNodes.Remove(key);
-            }
+            toRemoveNode.ForEach(entry => GameManager.Instance.SaveData.visitedNodes.Remove(entry));
             WinchCore.Log.Info(toRemoveNode.Count == 0 ? "No failed Hooded Figures" : "Re-established failed Hooded Figures");
         }
     }
