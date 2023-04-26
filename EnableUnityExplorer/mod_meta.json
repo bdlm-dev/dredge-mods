@@ -1,0 +1,8 @@
+{
+    "Author": "bluey#2108",
+    "ModAssembly": "EnableUnityExplorer.dll",
+    "Entrypoint": "EnableUnityExplorer.Loader/Initialize",
+    "Version": "1.0",
+    "MinWinchVersion": "alpha-1.2",
+    "DefaultConfig": {}
+}

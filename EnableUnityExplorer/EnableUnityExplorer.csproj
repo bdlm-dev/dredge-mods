@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+
+  <ItemGroup>
+	  <ProjectReference Include="..\..\Winch\Winch.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityExplorer.Standalone.Mono">
+      <HintPath>$(DredgePath)\Mods\UnityExplore\UnityExplorer.STANDALONE.Mono.dll</HintPath>
+    </Reference>
+    <Reference Include="UniverseLib.Mono">
+      <HintPath>$(DredgePath)\Mods\UnityExplore\UniverseLib.Mono.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
