@@ -25,3 +25,4 @@ Mods are installed by extracting the downloaded .zip file, and then placing that
 ## EnableUnityExplorer
 - Enables the [UnityExplorer](https://github.com/sinai-dev/UnityExplorer) for DREDGE.
 - `An in-game UI for exploring, debugging and modifying Unity games.`
+- UnityExplorer used has been rebuilt with HarmonyLib replacing HarmonyX, fork available [here](https://github.com/bdlm-dev/DREDGE-UnityExplorer/releases)
