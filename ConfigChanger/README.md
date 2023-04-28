@@ -1,5 +1,11 @@
 **This file contains information on each of the modifiable attributes this mod provides.**
+## Custom Attributes
+| Variable Name | Type | Default Value | Purpose |
+| --- | --- | --- | --- |
+| doLoadCustomConfig | boolean | true | Boolean `true` or `false` determining whether custom config should be used.
+| removeBoundary | boolean | false | Boolean `true` or `false` determining whether the "Entering Uncharted Waters" text and forced world events take effect.
 
+# Default Attributes
 | Variable Name | Type | Default Value | Purpose |
 | --- | --- | --- | --- |
 | WorldSize  | float | 1500 | Determines the scale of some game objects related to the game environment. Change this if you know what  you're doing.
@@ -71,4 +77,3 @@
 | HasteHeatLoss  | float | 0.8 | Multiplicative factor affecting haste heat loss.
 | HasteHeatCooldown  | float | 0.5 | Number of seconds before haste can be reactivated after reaching maximum haste heat.
 | name  | string | GameConfigDataProd | Ignore.
-| doLoadCustomConfig | boolean | true | Boolean `true` or `false` determining whether custom config should be used.
