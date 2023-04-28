@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using HarmonyLib;
 using System.IO;
 using System.Diagnostics;
+using FluffyUnderware.DevTools.Extensions;
 
 namespace ConfigChanger
 {
@@ -23,7 +24,8 @@ namespace ConfigChanger
         public static GameConfigData baseConfig;
         public static void Initialize()
         {
-            ManagersLoaded += GenerateConfig;
+            GenerateConfig();
+
             string _path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\Mods\\ConfigChanger\\" + "Config.json";
             if (File.Exists(_path))
             {
@@ -37,7 +39,7 @@ namespace ConfigChanger
             }
         }
 
-        public static void GenerateConfig(object sender, EventArgs e)
+        public static void GenerateConfig()
         {
             WinchCore.Log.Info("Getting config...");
             baseConfig = GameManager.Instance.GameConfigData;
@@ -46,9 +48,9 @@ namespace ConfigChanger
                 try
                 {
                     string[] propValues = new string[2] {
-                    setType[prop.PropertyType],
-                    prop.GetValue(baseConfig).ToString()
-                };
+                        setType[prop.PropertyType],
+                        prop.GetValue(baseConfig).ToString()
+                    };
                     if (setType.ContainsKey(prop.PropertyType))
                     {
                         ModConfig.GetProperty<JArray>("ConfigChanger", prop.Name.ToString(), JArray.FromObject(propValues)).ToObject<string[]>();
@@ -61,6 +63,7 @@ namespace ConfigChanger
                 }
             }
             ModConfig.GetProperty("ConfigChanger", "doLoadCustomConfig", true);
+            CustomPatches.InitializeCustomPatches();
         }
     }
 }
