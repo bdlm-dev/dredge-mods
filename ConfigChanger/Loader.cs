@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Winch.Core;
 using Winch.Config;
-using static Winch.Core.API.DredgeEvent;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 using HarmonyLib;
