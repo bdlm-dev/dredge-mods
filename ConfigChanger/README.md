@@ -29,7 +29,7 @@
 | SpawnChanceIncreasePerNonAberrationCaught  | decimal | 0.005 | Additive increase in chance of catching an aberration per non-aberration caught.
 | MaxAberrationSpawnChance  | float | 0.35 | Maximum aberration catch chance.
 | ResearchItemDredgeSpotSpawnChance  | float | 0.07 | Chance of receiving a research item from a dredge spot for a non-research-item dredge spot.
-| ResearchItemCrabPotSpawnChance  | float | 0.02 | Chance to replace caught item in crab pot with a research item, **Does not seem applicable in the current game state.**
+| ResearchItemCrabPotSpawnChance  | float | 0.02 | Chance to replace caught item in crab pot with a research item, **Does not apply in the current game version- Relies on an item property that none of the 'pot-able' items have enabled.**
 | TrophyMaxSize  | float | 0.85 | Minimum size necessary for a fish to be considered a trophy.
 | MaxCrabPotCount  | integer | 25 | Maximum number of crab pots allowed to be deployed at once. **Only applies on the switch version of the game.**
 | SpecialSpotChanceDay  | float | 0.025 | Chance of a fishing spot becoming a special spot during the day.
