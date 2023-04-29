@@ -59,7 +59,7 @@
 | AtrophyConditionMax  | float | 1.5 | Greatest possible freshness for an atrophy catch.
 | GreaterMarrowDebt  | decimal | 50 | Starting player debt at greater marrow.
 | GreaterMarrowDebtRepaymentProportion  | decimal | 0.15 | Portion of earnings repaid into debt.
-| WorldEventRollFrequency  | float | 0.1 | Minimum time between rolls for world events in terms of in-game days.
+| WorldEventRollFrequency  | float | 0.1 | Minimum time between rolls for world events in terms of in-game days. (not confirmed)
 | WorldEventChance  | float | 1 | Chance for a roll for a world event to succeed. 0-1
 | TrophyNotchSpawnChance  | float | 0.075 | Chance for a trophy notch to spawn.
 | BaitedTrophyNotchSpawnChance  | float | 0.4 | Chance for a trophy notch to spawn for bait fishing spots
