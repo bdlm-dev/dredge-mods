@@ -63,7 +63,7 @@
 | WorldEventChance  | float | 1 | Chance for a roll for a world event to succeed. 0-1
 | TrophyNotchSpawnChance  | float | 0.075 | Chance for a trophy notch to spawn.
 | BaitedTrophyNotchSpawnChance  | float | 0.4 | Chance for a trophy notch to spawn for bait fishing spots
-| FishToCatchBetweenTrophyNotches  | integer | 5 | Necessary fish to catch between being able to catch trophy fish.
+| FishToCatchBetweenTrophyNotches  | integer | 5 | Necessary fish to catch between being able to spawn trophy notches.
 | StockReplenishCoefficient  | float | 0.3 | Multiplier affecting the rate at which stock of a fishing spot will replenish.
 | MinStockReplenish  | float | 0.2 | Minimum base stock for a fishing spot to replenish per day.
 | InsaneTooltipThreshold  | float | 0.3 | Threshold for game to display insanity tooltip.
