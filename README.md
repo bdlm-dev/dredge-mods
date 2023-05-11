@@ -7,11 +7,13 @@ A collection of mods I've written for DREDGE in C#, using [Winch](https://github
 Mods are installed by extracting the downloaded .zip file, and then placing that file directly into your **Mods** folder.
 
 # Mods
-## AdjustHoodedFigures
-- Checks for failed Hooded Figure quests, and restarts them.
-- Only restarts **failed** quests.
-- Applies check once save is entered.
-- Books **can** be obtained from restarted quests.
+## AdjustHoodedFigures **[DEPRECATED]**
+- **Deprecated as of DREDGE 1.1**
+- **Hooded Figure quest timers removed.**
+- ~~Checks for failed Hooded Figure quests, and restarts them.~~
+- ~~Only restarts **failed** quests.~~
+- ~~Applies check once save is entered.~~
+- ~~Books **can** be obtained from restarted quests.~~
 
 ## ConfigChanger
 - Allows game config values to be changed from a Config.json file located within the `Mods/ConfigChanger/` folder.
