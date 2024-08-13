@@ -9,7 +9,7 @@ Mods are installed by extracting the downloaded .zip file, and then placing that
 # Mods
 ## AdjustHoodedFigures **[DEPRECATED]**
 - **Deprecated as of DREDGE 1.1**
-- **Hooded Figure quest timers removed.**
+- **The fix that this mod performs was integrated into the base game !!**
 - ~~Checks for failed Hooded Figure quests, and restarts them.~~
 - ~~Only restarts **failed** quests.~~
 - ~~Applies check once save is entered.~~
